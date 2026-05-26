@@ -41,4 +41,4 @@ python launcher.py
 
 ## License
 
-MIT — see repository owner.
+Findora Source Available License (FSAL) v1.0 — see [LICENSE](LICENSE).
