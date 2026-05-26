@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Storyboard x:Key="FadeInStoryboard">
+    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                     From="0" To="1" Duration="0:0:0.15"/>
+  </Storyboard>
+  <Storyboard x:Key="FadeOutStoryboard">
+    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                     From="1" To="0" Duration="0:0:0.15"/>
+  </Storyboard>
+  <Storyboard x:Key="ErrorFadeIn" RepeatBehavior="Forever" AutoReverse="True">
+    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                     From="0.4" To="1" Duration="0:0:0.8"/>
+  </Storyboard>
+  <Storyboard x:Key="PulseBorder" RepeatBehavior="Forever" AutoReverse="True">
+    <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
+                     From="0.6" To="1" Duration="0:0:1.2"/>
+  </Storyboard>
+</ResourceDictionary>

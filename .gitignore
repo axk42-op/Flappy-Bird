@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+.venv/
+
+# User saves (local only — use game_data.example.py as template)
+game_data.py
+**/dist/game_data.py
+
+# .NET / WPF
+**/bin/
+**/obj/
+*.user
+*.suo
+.vs/
+
+# Published build output (rebuild with GalacticFrontier/publish.ps1)
+GalacticFrontier/dist/GalacticFrontier.exe
+GalacticFrontier/dist/*.pdb
+
+# OS / IDE
+Thumbs.db
+.DS_Store
+.idea/

@@ -1,0 +1,38 @@
+<UserControl x:Class="GalacticFrontier.Views.CombatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GalacticFrontier"
+             Background="{StaticResource BgBrush}"
+             Focusable="True"
+             PreviewKeyDown="CombatView_OnPreviewKeyDown"
+             PreviewKeyUp="CombatView_OnPreviewKeyUp"
+             MouseMove="CombatView_OnMouseMove"
+             MouseLeftButtonDown="CombatView_OnMouseLeftDown"
+             MouseRightButtonDown="CombatView_OnMouseRightDown"
+             Loaded="CombatView_OnLoaded"
+             Unloaded="CombatView_OnUnloaded">
+  <Grid>
+    <Canvas x:Name="GameCanvas" Background="#050510" ClipToBounds="True"/>
+    <Canvas IsHitTestVisible="False">
+      <StackPanel Canvas.Left="16" Canvas.Top="16">
+        <TextBlock Foreground="{StaticResource SuccessBrush}" FontFamily="{StaticResource HudFont}" Text="{Binding HudHull}"/>
+        <Border Width="200" Height="12" Background="#660D1A2E" Margin="0,4,0,8"/>
+        <TextBlock Foreground="{StaticResource CyanBrush}" FontFamily="{StaticResource HudFont}" Text="{Binding HudShield}"/>
+      </StackPanel>
+      <TextBlock Canvas.Right="16" Canvas.Top="16" Foreground="{StaticResource DangerBrush}"
+                 FontFamily="{StaticResource HudFont}" Text="{Binding HudEnemies}"/>
+      <TextBlock Canvas.Left="16" Canvas.Bottom="16" Foreground="{StaticResource BlueBrush}"
+                 FontFamily="{StaticResource HudFont}" Text="{Binding WeaponInfo}"/>
+      <Border Canvas.Right="16" Canvas.Bottom="16" Width="120" Height="120" BorderBrush="{StaticResource CyanBrush}" BorderThickness="1" Background="#330D1A2E"/>
+    </Canvas>
+    <Grid x:Name="SummaryOverlay" Background="#AA0A0A1A" Visibility="{Binding ShowSummary, Converter={StaticResource BoolToVis}}">
+      <Border Style="{StaticResource SciFiPanelBorder}" Width="400" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel>
+          <TextBlock Style="{StaticResource SciFiTitle}" Text="COMBAT REPORT" FontSize="18"/>
+          <TextBlock Margin="0,16,0,0" Foreground="{StaticResource TextPrimaryBrush}" Text="{Binding SummaryText}" TextAlignment="Center"/>
+          <Button Margin="0,24,0,0" Style="{StaticResource SciFiButton}" Content="RETURN TO MAP" Command="{Binding ReturnCommand}"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>

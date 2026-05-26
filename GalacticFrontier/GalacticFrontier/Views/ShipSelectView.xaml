@@ -1,0 +1,51 @@
+<UserControl x:Class="GalacticFrontier.Views.ShipSelectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GalacticFrontier"
+             Background="{StaticResource BgBrush}">
+  <Grid Margin="24">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Style="{StaticResource SciFiTitle}" Text="{x:Static local:Strings.ShipSelectTitle}" Margin="0,0,0,16"/>
+    <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+      <ItemsControl ItemsSource="{Binding Ships}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel HorizontalAlignment="Center"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border x:Name="ShipBorder" Width="180" Height="280" Margin="8" Padding="12"
+                    BorderBrush="{StaticResource CyanBrush}" BorderThickness="1"
+                    Background="#E60D1A2E" Cursor="Hand"
+                    MouseLeftButtonDown="ShipCard_OnClick" Tag="{Binding Id}">
+              <StackPanel>
+                <Viewbox Height="80" Margin="0,0,0,8">
+                  <Path Data="{Binding SilhouettePath}" Fill="#331E90FF" Stroke="{StaticResource CyanBrush}" StrokeThickness="1.5"/>
+                </Viewbox>
+                <TextBlock Text="{Binding Name}" FontFamily="{StaticResource TitleFont}" FontSize="16"
+                           Foreground="{StaticResource CyanBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Margin="0,8,0,0" FontSize="10" Foreground="{StaticResource TextMutedBrush}"
+                           Text="{Binding Special}" TextWrapping="Wrap" TextAlignment="Center"/>
+                <StackPanel Margin="0,12,0,0">
+                  <TextBlock FontSize="10" Foreground="{StaticResource BlueBrush}" Text="Speed"/>
+                  <ProgressBar Style="{StaticResource SciFiProgressBar}" Maximum="10" Value="{Binding Speed}" Margin="0,2,0,6"/>
+                  <TextBlock FontSize="10" Foreground="{StaticResource BlueBrush}" Text="Hull"/>
+                  <ProgressBar Style="{StaticResource SciFiProgressBar}" Maximum="10" Value="{Binding Hull}" Margin="0,2,0,6"/>
+                  <TextBlock FontSize="10" Foreground="{StaticResource BlueBrush}" Text="Firepower"/>
+                  <ProgressBar Style="{StaticResource SciFiProgressBar}" Maximum="10" Value="{Binding Firepower}" Margin="0,2,0,6"/>
+                </StackPanel>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+    <Button Grid.Row="2" Style="{StaticResource SciFiButton}" HorizontalAlignment="Center" Margin="0,16,0,0"
+            Content="{x:Static local:Strings.ConfirmSelection}" Command="{Binding ConfirmCommand}"/>
+  </Grid>
+</UserControl>

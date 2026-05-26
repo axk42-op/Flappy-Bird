@@ -1,0 +1,43 @@
+<UserControl x:Class="GalacticFrontier.Views.UpgradesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GalacticFrontier"
+             xmlns:vm="clr-namespace:GalacticFrontier.ViewModels"
+             Background="{StaticResource BgBrush}">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Canvas x:Name="UpgradeCanvas" Grid.Column="0" Background="#050510" SizeChanged="UpgradeCanvas_OnSizeChanged"/>
+    <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="16"
+               Foreground="{StaticResource CyanBrush}" FontFamily="{StaticResource HudFont}" FontSize="14"
+               Text="{Binding CreditsText}"/>
+    <Border Grid.Column="1" Style="{StaticResource SciFiPanelBorder}" Margin="8">
+      <StackPanel>
+        <TextBlock Style="{StaticResource SciFiTitle}" Text="UPGRADE BAY" FontSize="16"/>
+        <TextBlock Margin="0,12,0,4" Style="{StaticResource SciFiTitle}" Text="{Binding DetailName}" FontSize="14"/>
+        <TextBlock Text="{Binding DetailDescription}" Foreground="{StaticResource TextMutedBrush}"/>
+        <Grid Margin="0,16,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+          </Grid.ColumnDefinitions>
+          <StackPanel Grid.Column="0">
+            <TextBlock Style="{StaticResource SciFiLabel}" Text="Current"/>
+            <TextBlock Foreground="{StaticResource TextPrimaryBrush}" Text="{Binding CurrentStat}"/>
+          </StackPanel>
+          <StackPanel Grid.Column="1">
+            <TextBlock Style="{StaticResource SciFiLabel}" Text="Next"/>
+            <TextBlock Foreground="{StaticResource SuccessBrush}" Text="{Binding NextStat}"/>
+          </StackPanel>
+        </Grid>
+        <TextBlock Margin="0,12,0,0" Foreground="{StaticResource WarnBrush}" Text="{Binding UpgradeCost}"/>
+        <Button Margin="0,16,0,0" Style="{StaticResource SciFiButton}" Content="{x:Static local:Strings.Upgrade}"
+                Command="{Binding UpgradeCommand}" IsEnabled="{Binding CanUpgrade}"/>
+        <TextBlock Style="{StaticResource SciFiError}" Text="{Binding ErrorMessage}"/>
+        <Button Margin="0,16,0,0" Style="{StaticResource SciFiButton}" Content="{x:Static local:Strings.Back}" Command="{Binding BackCommand}"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>
